@@ -21,9 +21,13 @@ Crie uma função ehSeminovo($ano) que receba o ano de fabricação e retorne tr
 carro tiver até 3 anos de uso e false caso contrário.
 Teste a função com os carros fornecidos.*/
 function semiNovo($ano): bool{
-    return $ano <= 3? true : false;
+    $anoAtual = date("Y");
+    return $anoAtual - $ano <= 3? true : false;
 }
-echo semiNovo(4)?"true\n":"false\n";
+echo semiNovo(2020)?"true\n":"false\n";
+echo semiNovo(2018)?"true\n":"false\n";
+echo semiNovo(2026)?"true\n":"false\n";
+echo semiNovo(2023)?"true\n":"false\n";
 
 /*📌 Exercício 3 – Função que verifica necessidade de revisão
 Crie uma função precisaRevisao($revisao, $ano) que retorne "Precisa de revisão" se $revisao
