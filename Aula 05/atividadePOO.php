@@ -16,9 +16,16 @@ class Cachorro{
         $this->castrado = $castrado;
         $this->sexo = $sexo;
     }   
+    public function latir(){
+        echo "O cachorro $this->nome está latindo!\n";
+    }
+    public function marcarTerritorio(){
+        echo "O cachorro $this->raca está marcando território.\n";
+    }
 }
 
 // Exercicio 2: Apos a criação da classe, crie 10 cachorros (10 objetos)
+
 $cachorro1 = new Cachorro('Cleide', 10, 'Spitz Alemão', true, 'F');
 $cachorro2 = new Cachorro('Joana', 3, 'Lulu da pomeronia', false, 'F');
 $cachorro3 = new Cachorro('Adolfo', 1, 'Shiba Inu', false, 'M');
@@ -33,6 +40,7 @@ $cachorro10 = new Cachorro('Bianca', 2, 'Husky Siberiano', false, 'F');
 // Exercicio 3: Após a conclusão dos exercicios 1 e 2, crie uma nova classe
 // chamada 'Usuario' com os atributos: Nome, CPF, Sexo, Email, Estado Civil, Cidade, Estado
 // Endereco e CEP
+
 class Usuario{
     public string $nome;
     public string $cpf;
@@ -43,10 +51,9 @@ class Usuario{
     public string $estado;
     public string $endereco;
     public string $cep;
-    
 
     public function __construct(string $nome, string $cpf, string $sexo, string $email, string $estado_civil, string $cidade, string $estado, string $endereco, string $cep){
-        $this->nome = $nome;
+        $this->nome = $nome;    
         $this->cpf = $cpf;
         $this->sexo = $sexo;
         $this->email = $email;
@@ -55,6 +62,21 @@ class Usuario{
         $this->estado = $estado;
         $this->endereco = $endereco;
         $this->cep = $cep;
+    }
+
+    public function testReservista(){
+        if (strtoupper($this->sexo) == "MASCULINO"){
+            echo "Apresente seu certificado de reservista do tiro de guerra! \n";
+            return;
+        } 
+        echo "Tudo certo\n";
+    }
+    public function casamento(int $anos_casado){
+        if (strtoupper($this->estado_civil) == "CASADO"){
+            echo "Parabens pelo seu casamento de $anos_casado anos!\n";
+            return;
+        }
+        echo "Oloco\n";
     }
 }
 
@@ -92,10 +114,40 @@ class Usuario{
             - Estado: Piauí
             - Endereço: Estrada 3, 33
             - CEP: 12345-99
-
-
     */
 
 $usuario1 = new Usuario("Josenildo Afonso Souza", "100.200.300-40", "Masculino", "josenewdo.souza@gmail.com", "Casado", "Xique-Xique", "Bahia", "Rua da amizade, 99", "40123-98");
 $usuario2 = new Usuario("Valentina Passos Scherrer", "070.070.060-70", "Feminino", "scherrer.velen@outlook.com", "Divorciada", "Iracemápolis", "São Paulo", "Avenida da saudade, 1942", "23456-24");
 $usuario3 = new Usuario("Claudio Braz Nepumoceno", "575.575.242-32", "Masculino", "Clauclau.nepumoceno@gmail.com", "Solteiro", "Piripiri", "Piauí", "Estrada 3, 33", "12345-99");
+
+// Exercicio 5: 
+// Crie um método para a classe "Cachorro" chamado de 'latir', no qual 
+// exibe uma mensagem "O cachorro $nome está latindo!"
+
+$cachorro1->latir();
+
+// Exercicio 6:
+// Crie outro método para a classe 'Cachorro' chamado de 'marcar território', no qual
+// exibe uma mensagem "O cachorro $nome da raça $raça está marcando território".
+
+$cachorro1->marcarTerritorio();
+
+// Exercicio 7: 
+// Crie um método para a classe 'Usuários' chamado de 'Testando Reservista' no qual
+// testa se o usuário é homem e caso sim exiba uma mensagem "Apresente seu
+// certificado de reservista do tiro de guerra!", caso não, exiba uma mensagem "Tudo
+// certo".
+
+$usuario1->testReservista();
+$usuario2->testReservista();
+
+// Exercicio 8
+// Crie um método para a classe 'Usuários' chamado de 'Casamento' que teste se o
+// estado civil é igual a 'Casado' e caso sim exiba a mensagem "Parabéns pelo seu
+// casamento de $anos_casado anos!" e caso não, exiba uma mensagem de "oloco". O
+// valor de anos de casamento será informado na hora de chamar o método para o
+// objeto em específico.
+
+$usuario1->casamento(10);
+$usuario2->casamento(10);
+$usuario3->casamento(10);
