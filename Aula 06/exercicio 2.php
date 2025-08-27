@@ -12,22 +12,22 @@ class Moto{
 
 //2. Crie ao menos 3 objetos para essa classe
 $moto1 = new Moto();
-$moto1->modelo = "";
+$moto1->modelo = "Hornet 500";
 $moto1->ano = 2020;
-$moto1->marca = "";
-$moto1->revisao = false;
+$moto1->marca = "Honda";
+$moto1->revisao = true;
 
 $moto2 = new Moto();
-$moto2->modelo = "";
+$moto2->modelo = "Elite 125";
 $moto2->ano = 2023;
-$moto2->marca = "";
+$moto2->marca = "Honda";
 $moto2->revisao = false;
 
 $moto3 = new Moto();
-$moto3->modelo = "";
+$moto3->modelo = "PCX";
 $moto3->ano = 2024;
-$moto3->marca = "";
-$moto3->revisao = false;
+$moto3->marca = "Honda";
+$moto3->revisao = true;
 
 /*3. Crie 3 construtores sendo:
 
