@@ -46,3 +46,14 @@ class Escola extends Imovel{
         $this->seguimento = $seguimento;
     }
 }
+
+// Crie uma classe filha chamada comercio com o atributo $tamanho
+
+
+class Comercio extends Imovel{
+    private $tamanho;
+    public function __construct($categoria, $n_comodos, $valor, $estado_conservacao, $tamanho){
+        parent::__construct($categoria, $n_comodos, $valor, $estado_conservacao);
+        $this->tamanho = $tamanho;
+    }
+}
