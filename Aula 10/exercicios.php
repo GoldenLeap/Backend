@@ -1,4 +1,5 @@
 <?php
+namespace ExerciciosPolimorfismo;
 // Exercício 1 – Formas Geométricas
 // Crie uma interface `Forma` com o método `calcularArea()`. Implemente as classes:
 // - `Quadrado` (lado),
@@ -105,7 +106,7 @@ class Aviao extends Transporte{
 class Elevador extends Transporte{
     function mover(){
         echo "O elevador está correndo pelo prédio\n";
-    }
+    }   
 }
 
 $carro1  = new Carro();

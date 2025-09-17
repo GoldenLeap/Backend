@@ -1,5 +1,5 @@
 <?php
-
+namespace Polimorfismo;
 //Polimorfismo:
 // O termo Polimorfismo significa "Várias formas". Associando isso a Programação Orientada a Objetos,
 // O conceito se trata de várias classes e suas instancias respondendo a um mesmo método de formas diferentes
@@ -9,26 +9,26 @@
 
 // Crie um metodo chamado "mover()", aonde ele responde de varias formas diferentes, para as classes: Carro, avião, barco e elevador;
 
-interface Acao{
+interface Veiculo{
     public function mover();
 }
 
-class Carro implements Acao{
+class Carro implements Veiculo{
     function mover(){
         echo "O carro está andando\n";
     }
 }
-class Aviao implements Acao{
+class Aviao implements Veiculo{
     function mover(){
         echo "O avião está voando\n";
     }
 }
-class Barco implements Acao{
+class Barco implements Veiculo{
     function mover(){
         echo "O barco está navegando\n";
     }
 }
-class Elevador implements Acao{
+class Elevador implements Veiculo{
     function mover(){
         $opt = rand(0, 1);
         $escolha = $opt? "subindo": "descendo";
@@ -37,11 +37,17 @@ class Elevador implements Acao{
 }
 
 $carro1 = new Carro();
+$carro2 = new Carro();
 $aviao1 = new Aviao();
+$aviao2 = new Aviao();
 $barco1 = new Barco();
+$barco2 = new Barco();
 $elevador1  = new Elevador();
 $carro1->mover();
+$carro2->mover();
 $aviao1->mover();
+$aviao2->mover();
 $barco1->mover();
+$barco2->mover();
 $elevador1->mover();
 
