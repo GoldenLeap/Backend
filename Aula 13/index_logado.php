@@ -1,4 +1,5 @@
 <?php
+
 require_once 'connectDB.php';
 session_start();
 
@@ -8,6 +9,38 @@ if (empty($_SESSION)) {
     header("Location: index.php?msgErro=Você precisa se autenticar no sistema.");
     die();
 }
+
+$anuncios = [];
+if (!empty($_GET['meus_anuncios']) && $_GET['meus_anuncios'] == 1) {
+    // Obter somente os anúncios cadastrados pelo(a) usuário(a) logado(a).
+    $sql = "SELECT * FROM anuncio WHERE email_usuario = :email ORDER BY id ASC";
+    $dados = array(':email' => $_SESSION['email']);
+    try {
+        $stmt = $pdo->prepare($sql);
+        if ($stmt->execute($dados)) {
+            // Execução da SQL Ok!!
+            $anuncios = $stmt->fetchAll();
+        } else {
+            die("Falha ao executar a SQL.. #1");
+        }
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+} else {
+    $sql = "SELECT * FROM anuncio ORDER BY id ASC";
+    try {
+        $stmt = $pdo->prepare($sql);
+        if ($stmt->execute()) {
+            // Execução da SQL Ok!!
+            $anuncios = $stmt->fetchAll();
+        } else {
+            die("Falha ao executar a SQL.. #2");
+        }
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -48,9 +81,10 @@ if (empty($_SESSION)) {
         <a href="index_logado.php?meus_anuncios=0" class="btn btn-info">Todos Anúncios</a>
         <a href="logout.php" class="btn btn-dark">Sair</a>
     </div>
-    <?php if(!empty($anuncio)):?>
+    <?php if (!empty($anuncios)) { ?>
+        <!-- Aqui que será montada a tabela com a relação de anúncios!! -->
         <div class="container">
-            <table class="table-striped">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -63,34 +97,39 @@ if (empty($_SESSION)) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($anuncio as $a):?>
+                    <?php foreach ($anuncios as $a) { ?>
                         <tr>
-                            <th scope="row"><?=$a['id'];?></th>
+                            <th scope="row"><?php echo $a['id']; ?></th>
                             <td>
                                 <?php
-                                if($a['fase'] == 'A'){
-                                    echo 'Adulto';
-                                }else{
-                                    echo 'Filhote';
+                                if ($a['fase'] == 'A') {
+                                    echo "Adulto";
+                                } else {
+                                    echo "Filhote";
                                 }
                                 ?>
                             </td>
-                            <td><?=$a['tipo'] == 'G'? 'Gato': 'Cachorro'?></td>
-                            <td><?=$a['pelagem_cor']?></td>
-                            <td><?=$a['raca']?></td>
-                            <td><?=$a['sexo'] == 'M' ? 'Macho' : 'Femea'?></td>
+                            <td><?php echo $a['tipo'] == 'G' ? "Gato" : "Cachorro"; ?></td>
+                            <td><?php echo $a['pelagem']; ?></td>
+                            <td><?php echo $a['raca']; ?></td>
+                            <td><?php echo $a['sexo'] == 'M' ? "Macho" : "Fêmea"; ?></td>
                             <td>
-                                <?php if ($a['email_usuario'] == $_SESSION['email']): ?>
-                                    <a href="alt_anuncio.php?id_anuncio=<?=$a['id']?>">Alterar</a>
-                                    <a href="del_anuncio.php?id_anuncio=<?=$a['id']?>">Excluir</a>
-                                <?php endif;?>
+                                <?php if ($a['email_usuario'] == $_SESSION['email']) { ?>
+                                    <a href="alt_anuncio.php?id_anuncio=<?php echo $a['id']; ?>"
+
+                                        class="btn btn-warning">Alterar</a>
+
+                                    <a href="del_anuncio.php?id_anuncio=<?php echo $a['id']; ?>"
+
+                                        class="btn btn-danger">Excluir</a>
+                                <?php } ?>
                             </td>
                         </tr>
-                        <?php endforeach;?>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
-        <?php endif;?>
+    <?php } ?>
 </body>
 
 </html>

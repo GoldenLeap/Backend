@@ -15,7 +15,7 @@ if (!empty($_POST)){
             
             $stmt = $pdo->prepare($sql);
 
-            $dados = [
+            $dados = [  
                 ':fase' => $_POST['fase'],
                 ':tipo' => $_POST['tipo'],
                 ':porte' => $_POST['porte'],
@@ -34,7 +34,47 @@ if (!empty($_POST)){
             msgStatus("index_logado.php", 'err', 'Falha ao cadastrar anúncio.');
             die($e->getMessage());
         }
-    } else {
+    } elseif ($_POST['enviarDados'] == 'ALT'){
+        try {
+            $sql = "UPDATE anuncio SET fase = :fase, tipo = :tipo, porte = :porte, pelagem = :pelagem_cor, raca = :raca, sexo = :sexo, observacao = :observacao WHERE id = :id_anuncio AND email_usuario = :email_usuario";
+            $dados = [
+                ':id_anuncio' => $_POST['id_anuncio'],
+                ':fase' => $_POST['fase'],
+                ':tipo' => $_POST['tipo'],
+                ':porte' => $_POST['porte'],
+                ':pelagem_cor' => $_POST['pelagemCor'],
+                ':raca' => $_POST['raca'],
+                ':sexo' => $_POST['sexo'],
+                ':observacao' => $_POST['observacao'],
+                ':email_usuario' => $_SESSION['email'],
+            ];
+            $stmt = $pdo->prepare($sql);
+            if($stmt->execute($dados)){
+                msgStatus('index_logado.php', 'suc', 'Alteração realizada com sucesso');
+            }else{
+                msgStatus('index_logado.php', 'err', 'Falha ao alterar anuncio');
+            }
+        } catch (PDOException $e){
+            msgStatus('index_logado.php', 'err', 'Falha ao alterar anuncio');
+        }
+    } elseif($_POST['enviarDados'] == 'DEL'){
+         try {
+            $sql = "DELETE FROM anuncio WHERE id = :id_anuncio AND email_usuario = :email_usuario";
+            $stmt = $pdo->prepare($sql);
+            $dados = [
+                ":id_anuncio" => $_POST["id_anuncio"],
+                ":email_usuario" => $_SESSION['email']
+            ];
+            if($stmt->execute($dados)){
+                msgStatus('index_logado.php', 'suc', 'Anuncio excluido com sucesso');
+            }else{
+                msgStatus('index_logado.php', 'err', 'Falha ao excluir anuncio');
+            }
+        } catch (PDOException $e){
+            msgStatus('index_logado.php', 'err', 'Falha ao excluir anuncio');
+        }
+    }
+    else {
         msgStatus('index_logado.php', 'err', 'Erro de acesso (Operação não definida).');
     }
 } else {
