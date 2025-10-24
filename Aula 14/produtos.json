@@ -1,0 +1,32 @@
+{
+    "719": {
+        "codigo": 719,
+        "nome": "Queijo Brie",
+        "preco": 50
+    },
+    "720": {
+        "codigo": 720,
+        "nome": "Iogurte Grego",
+        "preco": 4.79
+    },
+    "721": {
+        "codigo": 721,
+        "nome": "Guaran\u00e1 Jesus",
+        "preco": 100
+    },
+    "722": {
+        "codigo": 722,
+        "nome": "Bolacha Bono",
+        "preco": 3.99
+    },
+    "723": {
+        "codigo": 723,
+        "nome": "Desinfetante Barbarex",
+        "preco": 7.5
+    },
+    "724": {
+        "codigo": 724,
+        "nome": "Prestobarba Bic",
+        "preco": 18.9
+    }
+}

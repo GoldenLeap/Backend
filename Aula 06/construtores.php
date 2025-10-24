@@ -1,5 +1,5 @@
 <?php
-
+namespace aula_06;
 class Produtos{
     public $nome;
     public $categoria;

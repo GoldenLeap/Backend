@@ -1,6 +1,6 @@
 <?php
 
-
+namespace aula_06_2;
 // Crie uma classe "Produtos" com ao menos 4 atributos sem a utilização de um construtor
 class Produtos{
     public $nome;
