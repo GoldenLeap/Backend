@@ -25,7 +25,7 @@
                 aria-atomic="true" id="liveToast">
                 <div class="d-flex">
                     <div class="toast-body">
-                        <?php echo $_GET["suc"]?>
+                        <?php echo $_GET["suc"] ?>
                     </div>
                     <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
                         aria-label="Fechar"></button>
@@ -38,7 +38,7 @@
                 aria-atomic="true" id="liveToast">
                 <div class="d-flex">
                     <div class="toast-body">
-                        <?php echo $_GET["err"]?>
+                        <?php echo $_GET["err"] ?>
                     </div>
                     <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
                         aria-label="Fechar"></button>
@@ -47,7 +47,6 @@
         </div>
     <?php endif; ?>
 
-    <!-- FORM DE ADIÇÃO -->
     <div class="bebidas">
         <h1>Adicionar bebidas</h1>
         <form action="/?action=add" method="post">
@@ -60,12 +59,11 @@
             <label for="qtde">Quantidade da bebida</label>
             <input type="number" name="qtde" min="0" required>
             <label for="valor">Valor da bebida</label>
-            <input type="number" name="valor" min="0" required>
+            <input type="number" step="any" name="valor" min="0" max="4294967295" required>
             <input type="submit" value="Adicionar bebida">
         </form>
     </div>
 
-    <!-- LISTA DE BEBIDAS -->
     <div class="lista">
         <h1>Lista de Bebidas</h1>
         <table>
@@ -82,14 +80,14 @@
             <tbody>
                 <?php foreach ($bebidas as $bebida): ?>
                     <tr>
-                        <td><?php echo $bebida->getNome()?></td>
-                        <td><?php echo $bebida->getCategoria()?></td>
-                        <td><?php echo $bebida->getVolume()?></td>
-                        <td><?php echo $bebida->getValor()?></td>
-                        <td><?php echo $bebida->getQtde()?></td>
+                        <td><?php echo $bebida->getNome() ?></td>
+                        <td><?php echo $bebida->getCategoria() ?></td>
+                        <td><?php echo $bebida->getVolume() ?></td>
+                        <td><?php echo $bebida->getValor() ?></td>
+                        <td><?php echo $bebida->getQtde() ?></td>
                         <td class="acoes">
-                            <a class="btn btn-danger" href="/?action=delete&name=<?php echo $bebida->getNome();?>">Deletar</a>
-                            <a class="btn btn-success" href="<?php echo isset($_GET["name"]) && $_GET["name"] == $bebida->getNome() ? '/' : '/?action=edit&name=' . $bebida->getNome();?>">Editar</a>
+                            <button class="btn btn-danger" onclick="if(window.confirm('Tem certeza que deseja excluir a bebida?')) window.location = '/?action=delete&name=<?php echo $bebida->getNome();?>'" >Deletar</button>
+                            <a class="btn btn-success" href="<?php echo isset($_GET["name"]) && $_GET["name"] == $bebida->getNome() ? '/' : '/?action=edit&name=' . $bebida->getNome(); ?>">Editar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -97,21 +95,21 @@
         </table>
     </div>
 
-    <!-- FORM DE EDIÇÃO -->
     <?php if (isset($_GET["action"]) && $_GET["action"] == "edit"): ?>
         <div class="editar">
             <h1>Editar bebida</h1>
-            <form action="/?action=editSub" method="post">
+            <?php $name = urlencode($_GET['name']); ?>
+                <form action="/?action=editSub&name=<?php echo $name ?>" method="post">
                 <label for="nome">Nome da bebida</label>
-                <input type="text" value="<?php echo $_GET["name"]?>" readonly name="nome" required>
+                <input type="text" value="<?php echo $_GET["name"] ?>" name="nome" required>
                 <label for="categoria">Categoria da bebida</label>
-                <input type="text" name="novaCategoria" value="<?php echo $bebidaPlace->getCategoria()?>" required>
+                <input type="text" name="novaCategoria" value="<?php echo $bebidaPlace->getCategoria() ?>" required>
                 <label for="volume">Volume da bebida</label>
-                <input type="number" name="novoVolume" value="<?php echo $bebidaPlace->getVolume()?>" min="0" required>
+                <input type="number" name="novoVolume" value="<?php echo $bebidaPlace->getVolume() ?>" min="0" required>
                 <label for="qtde">Quantidade da bebida</label>
-                <input type="number" name="novaQtde" value="<?php echo $bebidaPlace->getQtde()?>" min="0" required>
+                <input type="number" name="novaQtde" value="<?php echo $bebidaPlace->getQtde() ?>" min="0" required>
                 <label for="valor">Valor da bebida</label>
-                <input type="number" name="novoValor" value="<?php echo $bebidaPlace->getValor()?>" min="0" required>
+                <input type="number" name="novoValor" step="any" value="<?php echo (float)$bebidaPlace->getValor() ?>" min="0" required>
                 <input type="submit" value="Editar Bebida">
             </form>
         </div>
