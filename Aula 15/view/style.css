@@ -1,179 +1,179 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
-    background: linear-gradient(135deg, #eaf4fc, #f7f9fb);
-    min-height: 100vh;
-    color: #2c3e50;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
-.bebidas,
-.lista {
-    background: #fff;
-    width: 100%;
-    max-width: 800px;
-    margin-top: 25px;
-    padding: 30px 36px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    transition: transform 0.4s ease;
-}
-
-.bebidas:hover,
-.lista:hover {
-    transform: translateY(-3px);
-}
-
-h1 {
-    text-align: center;
-    font-size: 26px;
-    color: #1a5276;
-    margin-bottom: 10px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-form label {
-    font-weight: 600;
-    color: #34495e;
-}
-
-form input[type="text"],
-form input[type="number"] {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    outline: none;
-    transition: border-color 0.4s, box-shadow 0.2s;
-}
-
-form input[type="text"]:focus,
-form input[type="number"]:focus {
-    border-color: #2980b9;
-    box-shadow: 0 0 5px rgba(41, 128, 185, 0.3);
-}
-
-form input[type="submit"] {
-    margin-top: 10px;
-    background: #2980b9;
-    color: #fff;
-    border: none;
-    padding: 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    transition: background 0.4s ease, transform 0.4s;
-}
-
-form input[type="submit"]:hover {
-    background: #3498db;
-    transform: scale(1.02);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 8px;
-    font-size: 15px;
-}
-
-thead tr {
-    background: #2980b9;
-    color: #fff;
-    text-align: left;
-}
-
-th,
-td {
-    padding: 12px 10px;
-    border-bottom: 1px solid #eee;
-}
-
-tbody tr:nth-child(even) {
-    background: #f7faff;
-}
-
-tbody tr:hover {
-    background: #ecf5fb;
-    transition: background 0.2s ease;
-}
-
-.acoes {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-}
-
-.btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 14px;
-    background-color: #2980b9;
-    text-decoration: none;
-    color: white;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    min-width: 90px;
-    height: 36px;
-    transition: background 0.4s ease, transform 0.4s;
-}
-
-.btn:hover {
-    background-color: #3498db;
-    transform: scale(1.05);
-}
-
-
-@media (max-width: 700px) {
-    body {
-        padding: 10px;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
-    .bebidas,
-    .lista {
+    body {
+        font-family: "Poppins", Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #eaf4fc, #f7f9fb);
+        min-height: 100vh;
+        color: #2c3e50;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         padding: 20px;
     }
 
+    .bebidas,
+    .lista,
+    .editar {
+        background: #fff;
+        width: 100%;
+        max-width: 800px;
+        margin-top: 25px;
+        padding: 30px 36px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    .bebidas:hover,
+    .lista:hover,
+    .editar:hover {
+        transform: translateY(-3px);
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 26px;
+        color: #1a5276;
+        margin-bottom: 10px;
+    }
+
     form {
-        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    form label {
+        font-weight: 600;
+        color: #34495e;
+    }
+
+    form input[type="text"],
+    form input[type="number"] {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+        transition: border-color 0.3s, box-shadow 0.2s;
+    }
+
+    form input[type="text"]:focus,
+    form input[type="number"]:focus {
+        border-color: #2980b9;
+        box-shadow: 0 0 5px rgba(41, 128, 185, 0.3);
+    }
+
+    form input[type="submit"],
+    .btn-primary {
+        margin-top: 10px;
+        background: #2980b9;
+        color: #fff !important;
+        border: none;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: background 0.3s ease, transform 0.2s;
+    }
+
+    form input[type="submit"]:hover,
+    .btn-primary:hover {
+        background: #3498db;
+        transform: scale(1.02);
     }
 
     table {
-        font-size: 13px;
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+        font-size: 15px;
+    }
+
+    thead tr {
+        background: #2980b9;
+        color: #fff;
+        text-align: left;
     }
 
     th,
     td {
-        padding: 8px;
+        padding: 12px 10px;
+        border-bottom: 1px solid #eee;
+        text-align: center;
+    }
+
+    tbody tr:nth-child(even) {
+        background: #f7faff;
+    }
+
+    tbody tr:hover {
+        background: #ecf5fb;
+        transition: background 0.2s ease;
     }
 
     .acoes {
+        display: flex;
+        gap: 8px;
         justify-content: center;
+        flex-wrap: wrap;
     }
 
     .btn {
-        flex: 1;
-        min-width: auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 14px;
+        background-color: #2980b9;
+        text-decoration: none;
+        color: white;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        min-width: 90px;
+        height: 36px;
+        transition: background 0.3s ease, transform 0.3s;
     }
-}
+
+    .btn:hover {
+        background-color: #3498db;
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 700px) {
+        body {
+            padding: 10px;
+        }
+
+        .bebidas,
+        .lista,
+        .editar {
+            padding: 20px;
+        }
+
+        table {
+            font-size: 13px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+        }
+
+        .acoes {
+            justify-content: center;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: auto;
+        }
+    }

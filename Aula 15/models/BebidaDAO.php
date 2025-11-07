@@ -24,9 +24,9 @@ class BebidaDAO
     public function Update($nome, $newCategoria, $newVolume=null, $newValor=null, $newQtde=null){
         if(isset($this->bebidas[$nome])){
             if($newCategoria ) $this->bebidas[$nome]->setCategoria($newCategoria);
-            if($newCategoria ) $this->bebidas[$nome]->setVolume($newVolume);
-            if($newCategoria ) $this->bebidas[$nome]->setValor($newValor);
-            if($newCategoria ) $this->bebidas[$nome]->setQtde($newQtde);
+            if($newVolume ) $this->bebidas[$nome]->setVolume($newVolume);
+            if($newValor ) $this->bebidas[$nome]->setValor($newValor);
+            if($newQtde ) $this->bebidas[$nome]->setQtde($newQtde);
             $this->saveInfo();
         }
     }
@@ -50,4 +50,12 @@ class BebidaDAO
         }
         file_put_contents($this->arquivo, json_encode($data, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES), JSON_PRETTY_PRINT);
     }
+    public function selectName($nome){
+        foreach($this->bebidas as $bebida){
+            if($bebida->getNome() == $nome){
+                return $bebida;
+            }
+        }
+    }
 }
+
