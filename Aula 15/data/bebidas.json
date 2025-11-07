@@ -1,16 +1,1 @@
-{
-    "Bebida": {
-        "nome": "Bebida",
-        "categoria": "Bebida 2",
-        "volume": "900",
-        "valor": "123213",
-        "qtde": "1000"
-    },
-    "Bebida2": {
-        "nome": "Bebida2",
-        "categoria": "Bebida 2",
-        "volume": "900",
-        "valor": "123213",
-        "qtde": "1000"
-    }
-}
+{"Bebida":{"nome":"Bebida","categoria":"bebida","volume":"123123","valor":"2313211","qtde":"212321321"}}

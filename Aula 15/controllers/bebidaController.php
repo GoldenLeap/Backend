@@ -7,6 +7,10 @@ switch ($act) {
         addBebida($dao);
         header("location: /");
         break;
+    case "delete":
+        delBebida($dao);
+        header("location: /");
+        break;
     default:
         break;
 }
@@ -21,4 +25,9 @@ function addBebida($dao){
         $bebida = new Bebida($nome, $categoria, $volume, $valor, $qtde);
         $dao->Insert($bebida);
     }
+}
+
+function delBebida($dao){
+    $nome = $_GET["name"];
+    $dao->Delete($nome);
 }

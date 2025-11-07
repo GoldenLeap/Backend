@@ -33,6 +33,7 @@ class BebidaDAO
 
     public function Delete($nome){
         unset($this->bebidas[$nome]);
+        $this->saveInfo();
     }
 
     private function saveInfo()
