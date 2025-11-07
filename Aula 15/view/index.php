@@ -1,7 +1,7 @@
 <?php
-require_once(__DIR__ . "/../models/Bebida.php");
-require_once(__DIR__ . "/../models/BebidaDAO.php");
-require_once(__DIR__ . "/../controllers/bebidaController.php");
+    require_once __DIR__ . "/../models/Bebida.php";
+    require_once __DIR__ . "/../models/BebidaDAO.php";
+    require_once __DIR__ . "/../controllers/bebidaController.php";
 ?>
 
 <!DOCTYPE html>
@@ -24,11 +24,11 @@ require_once(__DIR__ . "/../controllers/bebidaController.php");
             <label for="categoria">Categoria da bebida</label>
             <input type="text" name="categoria" id="" required>
             <label for="volume">Volume da bebida</label>
-            <input type="number" name="volume" id="" required>
+            <input type="number" name="volume" min="0" id="" required>
             <label for="qtde">Quantidade da bebida</label>
-            <input type="number" name="qtde" id="" required>
+            <input type="number" name="qtde" min="0" id="" required>
             <label for="valor">Valor da bebida</label>
-            <input type="number" name="valor" id="" required>
+            <input type="number" name="valor" min=0 id="" required>
             <input type="submit" value="Adicionar bebida">
         </form>
     </div>
@@ -47,13 +47,13 @@ require_once(__DIR__ . "/../controllers/bebidaController.php");
             <tbody>
                 <?php foreach ($bebidas as $bebida): ?>
                     <tr>
-                        <td><?= $bebida->getNome() ?></td>
-                        <td><?= $bebida->getCategoria() ?></td>
-                        <td><?= $bebida->getVolume() ?></td>
-                        <td><?= $bebida->getValor() ?></td>
-                        <td><?= $bebida->getQtde() ?></td>
-                        <td><a class="btn" href="/?action=delete&name=<?=$bebida->getNome();?>">Deletar</a>
-                        <a class="btn" href="/?action=edit&name=<?=$bebida->getNome();?>">Editar</a></td> 
+                        <td><?php echo $bebida->getNome()?></td>
+                        <td><?php echo $bebida->getCategoria()?></td>
+                        <td><?php echo $bebida->getVolume()?></td>
+                        <td><?php echo $bebida->getValor()?></td>
+                        <td><?php echo $bebida->getQtde()?></td>
+                        <td class="acoes"><a class="btn" href="/?action=delete&name=<?php echo $bebida->getNome();?>">Deletar</a>
+                        <a class="btn" href="/?action=edit&name=<?php echo $bebida->getNome();?>">Editar</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

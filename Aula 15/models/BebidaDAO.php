@@ -48,6 +48,6 @@ class BebidaDAO
                 'qtde' => $bebida->getQtde(),
             ];
         }
-        file_put_contents($this->arquivo, json_encode($data), JSON_PRETTY_PRINT);
+        file_put_contents($this->arquivo, json_encode($data, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES), JSON_PRETTY_PRINT);
     }
 }
