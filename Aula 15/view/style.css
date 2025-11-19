@@ -1,76 +1,179 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f7f7f7;
-    margin: 0;
-    padding: 0;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-.bebidas,
-.lista {
-    background: #fff;
-    margin: 30px auto;
-    padding: 24px 32px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    max-width: 600px;
-}
+    body {
+        font-family: "Poppins", Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #eaf4fc, #f7f9fb);
+        min-height: 100vh;
+        color: #2c3e50;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
 
-h1 {
-    color: #2c3e50;
-    margin-bottom: 18px;
-}
+    .bebidas,
+    .lista,
+    .editar {
+        background: #fff;
+        width: 100%;
+        max-width: 800px;
+        margin-top: 25px;
+        padding: 30px 36px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        transition: transform 0.3s ease;
+    }
 
-form label {
-    display: block;
-    margin-top: 12px;
-    color: #34495e;
-    font-weight: bold;
-}
+    .bebidas:hover,
+    .lista:hover,
+    .editar:hover {
+        transform: translateY(-3px);
+    }
 
-form input[type="text"],
-form input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    margin-top: 4px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+    h1 {
+        text-align: center;
+        font-size: 26px;
+        color: #1a5276;
+        margin-bottom: 10px;
+    }
 
-form input[type="submit"] {
-    margin-top: 18px;
-    background: #2980b9;
-    color: #fff;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background 0.2s;
-}
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
 
-form input[type="submit"]:hover {
-    background: #3498db;
-}
+    form label {
+        font-weight: 600;
+        color: #34495e;
+    }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 18px;
-}
+    form input[type="text"],
+    form input[type="number"] {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+        transition: border-color 0.3s, box-shadow 0.2s;
+    }
 
-thead tr {
-    background: #2980b9;
-    color: #fff;
-}
+    form input[type="text"]:focus,
+    form input[type="number"]:focus {
+        border-color: #2980b9;
+        box-shadow: 0 0 5px rgba(41, 128, 185, 0.3);
+    }
 
-th,
-td {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    text-align: left;
-}
+    form input[type="submit"],
+    .btn-primary {
+        margin-top: 10px;
+        background: #2980b9;
+        color: #fff !important;
+        border: none;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: background 0.3s ease, transform 0.2s;
+    }
 
-tr:last-child td {
-    border-bottom: none;
-}
+    form input[type="submit"]:hover,
+    .btn-primary:hover {
+        background: #3498db;
+        transform: scale(1.02);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+        font-size: 15px;
+    }
+
+    thead tr {
+        background: #2980b9;
+        color: #fff;
+        text-align: left;
+    }
+
+    th,
+    td {
+        padding: 12px 10px;
+        border-bottom: 1px solid #eee;
+        text-align: center;
+    }
+
+    tbody tr:nth-child(even) {
+        background: #f7faff;
+    }
+
+    tbody tr:hover {
+        background: #ecf5fb;
+        transition: background 0.2s ease;
+    }
+
+    .acoes {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 14px;
+        background-color: #2980b9;
+        text-decoration: none;
+        color: white;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        min-width: 90px;
+        height: 36px;
+        transition: background 0.3s ease, transform 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #3498db;
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 700px) {
+        body {
+            padding: 10px;
+        }
+
+        .bebidas,
+        .lista,
+        .editar {
+            padding: 20px;
+        }
+
+        table {
+            font-size: 13px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+        }
+
+        .acoes {
+            justify-content: center;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: auto;
+        }
+    }
