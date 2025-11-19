@@ -18,6 +18,9 @@ class BebidaDAO
     }
     public function Insert(Bebida $bebida)
     {
+        if(in_array($bebida->getNome(), $this->bebidas)){
+            return;
+        }
         $this->bebidas[$bebida->getNome()] = $bebida;
         $this->saveInfo();
     }

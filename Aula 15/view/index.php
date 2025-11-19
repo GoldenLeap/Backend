@@ -41,6 +41,7 @@ require_once(__DIR__ . "/../controllers/bebidaController.php");
                     <th>Volume</th>
                     <th>Valor</th>
                     <th>Quantidade</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +52,7 @@ require_once(__DIR__ . "/../controllers/bebidaController.php");
                         <td><?= $bebida->getVolume() ?></td>
                         <td><?= $bebida->getValor() ?></td>
                         <td><?= $bebida->getQtde() ?></td>
+                        <td></td>
                     </tr>
 
                 <?php endforeach; ?>
