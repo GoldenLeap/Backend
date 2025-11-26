@@ -12,7 +12,10 @@
                 trim($_POST['quantidade']),
             );
             break;
-    }
+        case 'delete':
+            $controller->deletar($_GET["id"]);
+            break;
+        }  
     $livros = $controller->ler();
 ?>
 <!DOCTYPE html>
@@ -50,17 +53,22 @@
                 <th>Ano de Publicação</th>
                 <th>Genero</th>
                 <th>Quantidade</th>
+                <th>Ação</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach($livros as $livro):?>
+            <?php foreach($livros as $i => $livro):?>
                 <tr>
-                    <td><?= $livro['titulo'] ?></td>
-                    <td><?= $livro['titulo'] ?></td>
-                    <td><?= $livro['autor'] ?></td>
-                    <td><?= $livro['ano'] ?></td>
-                    <td><?= $livro['genero'] ?></td>
-                    <td><?= $livro['quantidade'] ?></td>
+                    <td><?= $i?></td>
+                    <td><?= $livro->getTitulo() ?></td>
+                    <td><?= $livro->getAutor() ?></td>
+                    <td><?= $livro->getAno()?></td>
+                    <td><?= $livro->getGenero() ?></td>
+                    <td><?= $livro->getQtde() ?></td>
+                    <td>
+                        <a href="?action=edit&id=<?=$i?>">Editar</a>
+                        <a href="?action=delete&id=<?=$i?>">Delete</a>
+                    </td>
                 </tr>    
             <?php endforeach;?>
         </tbody>

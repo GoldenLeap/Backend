@@ -15,10 +15,11 @@ class Livro
         $this->quantidade = $quantidade;
     }
 
-    public function getNome(){
+
+    public function getTitulo(){
         return $this->titulo;
     }
-    public function setNome($titulo){
+    public function setTitulo($titulo){
         $this->titulo = $titulo;
         return $this;
     }

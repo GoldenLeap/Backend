@@ -24,7 +24,7 @@ class LivroDAO
         $stmt = $this->conn->prepare("INSERT INTO livros(titulo, autor, genero, ano, quantidade)
         VALUES (:titulo, :autor, :genero, :ano, :quantidade)");
         $stmt->execute([
-            ':titulo'     => $livro->getNome(),
+            ':titulo'     => $livro->getTitulo(),
             ':autor'      => $livro->getAutor(),
             ':genero'     => $livro->getGenero(),
             ":ano"        => $livro->getAno(),

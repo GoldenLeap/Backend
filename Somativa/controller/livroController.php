@@ -13,6 +13,7 @@ class LivroController{
     public function criar($titulo, $autor,$ano, $genero, $qtd_livro){
         $livro = new Livro($titulo, $autor, $ano, $genero, $qtd_livro );
         $this->dao->criarLivro($livro);
+        header("location: /");
     }
     public function ler(){
         return $this->dao->lerLivro();
@@ -26,5 +27,7 @@ class LivroController{
     }
     public function deletar($id){
         $this->dao->excluirLivro($id);
+        header("location: /");
+
     }
 }
