@@ -58,6 +58,7 @@ class LivroDAO
             ano=:newAno,
 
             quantidade = :newQuantidade
+            WHERE id = :id;
             "
         );
         $stmt->execute([
@@ -65,7 +66,8 @@ class LivroDAO
             ':newAutor'      => $novoAutor,
             ':newGenero'     => $novoGenero,
             ':newAno'        => $novoAno,
-            ':newQuantidade' => $novaQuantidade]
+            ':newQuantidade' => $novaQuantidade,
+            ':id' => "$id"]
         );
     }
     public function excluirLivro($id)
@@ -73,9 +75,40 @@ class LivroDAO
         $stmt = $this->conn->prepare("DELETE FROM livros WHERE id=:id");
         $stmt->execute([':id' => $id]);
     }
-    public function buscarPorTitulo($titulo){
-        $stmt = $this->conn->prepare("SELECT * Livros WHERE titulo=:titulo");
-        $stmt->execute([":titulo"=>$titulo]);
-    }
-}
+    public function buscarPorTitulo($titulo)
+    {
+        $result = [];
+        $stmt   = $this->conn->prepare("SELECT * FROM Livros WHERE titulo LIKE :titulo");
+        $stmt->execute([":titulo" => "%" . $titulo . "%"]);
 
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $result[$row['id']] = new Livro(
+                $row['titulo'],
+                $row['autor'],
+                $row['ano'],
+                $row['genero'],
+                $row['quantidade']
+            );
+        }
+
+        return $result;
+    }
+
+    public function buscarPorId($id)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM livros WHERE id=:id");
+        $stmt->execute([":id" => $id]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row) {
+            return new Livro(
+                $row['titulo'],
+                $row['autor'],
+                $row['ano'],
+                $row['genero'],
+                $row['quantidade']
+            );
+        }
+        return null;
+    }
+
+}
